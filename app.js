@@ -32,7 +32,7 @@ numberForm.addEventListener('submit', (event) => {
   });
 
   const successCount = getSuccessCount(SECRET_NUMBER, userGuess);
-  console.log(successCount);
+  renderGuess(userGuess, successCount);
 });
 
 // Return object representing success and error count
@@ -57,3 +57,19 @@ function getSuccessCount(correctNumber, userGuess) {
 
   return successCount;
 }
+
+// Render user guess to screen, including success count
+function renderGuess(userGuess, successCount) {
+  const guessTemplate = document.getElementById('prev-guess-template');
+  const guessElement = document.importNode(guessTemplate.content, true);
+
+  // Iterate over all guess-value divs and include the corresponding guess number
+  const guessDivs = guessElement.querySelectorAll('.guess-value');
+  guessDivs.forEach((div, index) => {
+    div.textContent = userGuess[index];
+  });
+
+  // Append template to container
+  const guessContainer = document.querySelector('.container');
+  guessContainer.appendChild(guessElement);
+} 
