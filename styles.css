@@ -1,6 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root {
+    --med-font: 1.6rem;
+    --big-font: 2.4rem;
+    --accent-color: green;
+}
+
+/* ===== HEADER ===== */
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    box-shadow: 2px 0 3px 3px rgba(0,0,0,0.1) ;
+    margin-bottom: 3rem;
+}
+
+.header__title {
+    font-size: var(--big-font);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header__nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav__item {
+    font-size: var(--med-font);
+    cursor: pointer;
+}
+
+/* ===== INPUT FORM ===== */
+main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.input-form {
+    display: flex;
+    justify-content: center;
+}
+
+.form__input {
+    width: 4rem;
+    height: 4rem;
+    -moz-appearance: textfield;
+    margin-right: 1rem;
+    font-size: var(--med-font);
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid rgb(121, 121, 121);
+}
+
+.form__btn {
+    width: 6rem;
+    height: 4rem;
+    font-size: var(--med-font);
+    background-color: var(--accent-color);
+    color: whitesmoke;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in-out;
+}
+
+.form__btn:hover {
+    opacity: .8;
+}
+
+/* ===== PREVIOUS GUESS ===== */
+.prev-section {
+    margin-top: 4rem;
+}
+
+.prev-guess {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.guess-value {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 1rem;
+    font-size: var(--med-font);
+    border-radius: 5px;
+    border: 1px solid rgb(121, 121, 121);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
