@@ -92,6 +92,12 @@ main {
 .prev-guess {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.guess-container {
+    display: flex;
+    justify-content: center;
     margin: 2rem 0;
 }
 
@@ -105,4 +111,25 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.indicator-container {
+    display: flex;
+}
+
+.indicator {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: 1px solid rgb(121, 121, 121);
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.indicator--correct {
+    background-color: green;
+}
+
+.indicator--misplaced {
+    background-color: rgb(236, 236, 0);
 }

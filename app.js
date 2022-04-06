@@ -33,6 +33,7 @@ numberForm.addEventListener('submit', (event) => {
 
   const successCount = getSuccessCount(SECRET_NUMBER, userGuess);
   renderGuess(userGuess, successCount);
+  console.log(successCount);
 });
 
 // Return object representing success and error count
@@ -44,15 +45,9 @@ function getSuccessCount(correctNumber, userGuess) {
   };
 
   userGuess.forEach((value, index) => {
-    if (correctNumber.indexOf(value) === -1) {
-      successCount.error += 1;
-    }
-    else if (correctNumber.indexOf(value) === index) {
-      successCount.correct += 1;
-    }
-    else {
-      successCount.misplaced += 1;
-    }
+    if (correctNumber.indexOf(value) === -1) { successCount.error += 1; }
+    else if (correctNumber.indexOf(value) === index) { successCount.correct += 1; }
+    else { successCount.misplaced += 1; }
   });
 
   return successCount;
@@ -63,13 +58,29 @@ function renderGuess(userGuess, successCount) {
   const guessTemplate = document.getElementById('prev-guess-template');
   const guessElement = document.importNode(guessTemplate.content, true);
 
-  // Iterate over all guess-value divs and include the corresponding guess number
+  // Iterate over all guess-value divs and include their corresponding guess number
   const guessDivs = guessElement.querySelectorAll('.guess-value');
   guessDivs.forEach((div, index) => {
     div.textContent = userGuess[index];
   });
 
-  // Append template to container
+  // Iterate over indicators and update their status according to success count
+  // First update all correct indicators, when done then update misplaced
+  const indicatorDivs = guessElement.querySelectorAll('.indicator');
+  let correct = successCount.correct;
+  let misplaced = successCount.misplaced;
+  indicatorDivs.forEach(div => {
+    if (correct > 0) {
+      div.classList.add('indicator--correct');
+      correct--;
+    }
+    else if (misplaced > 0) {
+      div.classList.add('indicator--misplaced');
+      misplaced--;
+    }
+  });
+
+  // Append guess element to container
   const guessContainer = document.querySelector('.container');
-  guessContainer.appendChild(guessElement);
+  guessContainer.prepend(guessElement);
 } 
