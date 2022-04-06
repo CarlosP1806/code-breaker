@@ -46,6 +46,35 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+/* ===== MESSAGE ===== */
+.message {
+    display: none;
+    margin-bottom: 3rem;
+}
+
+.message--active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.message__text {
+    font-size: var(--big-font);
+    text-align: center;
+}
+
+.message__btn {
+    padding: 1rem 1.2rem;
+    background-color: green;
+    border-radius: 5px;
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: var(--med-font)
+}
+
+
 /* ===== INPUT FORM ===== */
 main {
     width: 90%;

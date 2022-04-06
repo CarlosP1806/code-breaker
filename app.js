@@ -25,15 +25,28 @@ console.log(SECRET_NUMBER);
 const numberForm = document.querySelector('.input-form');
 numberForm.addEventListener('submit', (event) => {
   event.preventDefault();
+
   const userGuess = [];
   const inputElements = document.querySelectorAll('.form__input');
   inputElements.forEach(input => {
     userGuess.push(parseInt(input.value));
+    // Empty form
+    input.value = '';
   });
 
   const successCount = getSuccessCount(SECRET_NUMBER, userGuess);
   renderGuess(userGuess, successCount);
-  console.log(successCount);
+
+  // User won
+  if (successCount.correct === 4) {
+    const message = document.querySelector('.message');
+    message.classList.add('message--active');
+    const messageText = message.querySelector('.message__text');
+    messageText.textContent = "¡Has Ganado!";
+
+    // Disable new submissions
+    numberForm.style.display = 'none';
+  }
 });
 
 // Return object representing success and error count
@@ -83,4 +96,26 @@ function renderGuess(userGuess, successCount) {
   // Append guess element to container
   const guessContainer = document.querySelector('.container');
   guessContainer.prepend(guessElement);
-} 
+}
+
+// Navbar actions
+const newGameButton = document.getElementById('new-game');
+newGameButton.addEventListener('click', () => {
+  window.location.reload();
+});
+
+const giveUpButton = document.getElementById('give-up');
+giveUpButton.addEventListener('click', () => {
+  const message = document.querySelector('.message');
+  message.classList.add('message--active');
+  const messageText = message.querySelector('.message__text');
+  messageText.textContent = 
+    `¡Has Perdido! El número era: ${SECRET_NUMBER.join('')}`;
+  // Disable new submissions
+  numberForm.style.display = 'none';
+});
+
+const showInstructionsButton = document.getElementById('instructions');
+showInstructionsButton.addEventListener('click', () => {
+
+});

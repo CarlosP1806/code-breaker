@@ -14,13 +14,19 @@
   <header class="header">
     <h1 class="header__title">Code Breaker</h1>
     <nav class="header__nav">
-      <div class="nav__item">Instrucciones</div>
-      <div class="nav__item">Rendirse</div>
-      <div class="nav__item">Juego Nuevo</div>
+      <div class="nav__item" id="instructions">Instrucciones</div>
+      <div class="nav__item" id="give-up">Rendirse</div>
+      <div class="nav__item" id="new-game">Juego Nuevo</div>
     </nav>
   </header>
 
   <main>
+
+    <div class="message">
+      <p class="message__text"></p>
+      <a href="" class="message__btn">Jugar de Nuevo</a>
+    </div>
+    
     <section class="input-section">
       <form class="input-form">
         <input id="number-0" type="number" min="0" max="9" class="form__input" required>
