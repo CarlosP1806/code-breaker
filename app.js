@@ -115,7 +115,12 @@ giveUpButton.addEventListener('click', () => {
   numberForm.style.display = 'none';
 });
 
+const instructionModal = document.querySelector('.modal');
 const showInstructionsButton = document.getElementById('instructions');
 showInstructionsButton.addEventListener('click', () => {
-
+  instructionModal.classList.add('modal--active');
+});
+const closeModalButton = document.querySelector('.modal__btn');
+closeModalButton.addEventListener('click', () => {
+  instructionModal.classList.remove('modal--active');
 });

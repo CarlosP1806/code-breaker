@@ -26,7 +26,7 @@
       <p class="message__text"></p>
       <a href="" class="message__btn">Jugar de Nuevo</a>
     </div>
-    
+
     <section class="input-section">
       <form class="input-form">
         <input id="number-0" type="number" min="0" max="9" class="form__input" required>
@@ -59,6 +59,69 @@
       </div>
     </div>
   </template>
+
+  <article class="modal">
+    <div class="modal__header">
+      <h2 class="modal__title">Instrucciones</h2>
+      <div class="modal__btn">X</div>
+    </div>
+    <p class="modal__text">
+      Intenta adivinar el número secreto. Este número tiene 4 dígitos distintos.
+    </p>
+    <p class="modal__text">
+      Una vez hecho el intento, se mostrarán indicadores de colores para
+      ayudarte a encontrar la respuesta.
+    </p>
+    <p class="modal__text">
+      Un indicador verde significa que hay un dígito en su posición correcta.
+    </p>
+    <p class="modal__text">
+      Un indicador amarillo significa que hay un dígito correcto pero mal posicionado.
+    </p>
+    <p class="modal__text">
+      Un indicador blanco significa que hay números erróneos.
+    </p>
+    <p class="modal__text">
+      Veamos un ejemplo. Supón que el número secreto es 1234. Tras
+      ingresar el número 2136, se mostrará lo siguiente:
+    </p>
+    <div class="prev-guess">
+      <div class="guess-container">
+        <div class="guess-value">2</div>
+        <div class="guess-value">1</div>
+        <div class="guess-value">3</div>
+        <div class="guess-value">6</div>
+      </div>
+      <div class="indicator-container">
+        <div class="indicator indicator--correct"></div>
+        <div class="indicator indicator--misplaced"></div>
+        <div class="indicator indicator--misplaced"></div>
+        <div class="indicator"></div>
+      </div>
+    </div>
+    <p class="modal__text">
+      ¡Importante! Los colores NO indican la posición final de los números. Así, el primer
+      indicador verde del ejemplo anterior no significa que el primer número está en la
+      posición correcta.
+    </p>
+    <p class="modal__text">
+      Tras ingresar el número 5178 se mostrará lo siguiente:
+    </p>
+    <div class="prev-guess">
+      <div class="guess-container">
+        <div class="guess-value">5</div>
+        <div class="guess-value">1</div>
+        <div class="guess-value">7</div>
+        <div class="guess-value">8</div>
+      </div>
+      <div class="indicator-container">
+        <div class="indicator indicator--misplaced"></div>
+        <div class="indicator"></div>
+        <div class="indicator"></div>
+        <div class="indicator"></div>
+      </div>
+    </div>
+  </article>
 
   <script src="./app.js"></script>
 </body>
