@@ -32,7 +32,6 @@ function renderMessage(text, buttonActive = true) {
 
 // Generate number on page load, then wait for user input
 const SECRET_NUMBER = generateRandomNumber();
-console.log(SECRET_NUMBER);
 
 // Respond to number submission
 const numberForm = document.querySelector('.input-form');
