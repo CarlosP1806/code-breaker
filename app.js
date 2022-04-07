@@ -17,6 +17,22 @@ function generateRandomIndex(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// Render message to screen
+function renderMessage(text, buttonActive = true) {
+  const message = document.querySelector('.message');
+  message.classList.add('message--active');
+  const messageText = document.querySelector('.message__text');
+  messageText.textContent = text;
+
+  const messageButton = document.querySelector('.message__btn');
+  if (!buttonActive) {
+    messageButton.style.display = 'none';
+  }
+  else {
+    messageButton.style.display = 'block';
+  }
+}
+
 // Generate number on page load, then wait for user input
 const SECRET_NUMBER = generateRandomNumber();
 
@@ -34,16 +50,19 @@ numberForm.addEventListener('submit', (event) => {
     input.value = '';
   });
 
+  // Check if input has no duplicate values
+  const guessSet = new Set(userGuess);
+  if (userGuess.length !== guessSet.size) {
+    renderMessage('No incluir digitos repetidos.', false)
+    return;
+  }
+
   const successCount = getSuccessCount(SECRET_NUMBER, userGuess);
   renderGuess(userGuess, successCount);
 
   // If user won
   if (successCount.correct === 4) {
-    const message = document.querySelector('.message');
-    message.classList.add('message--active');
-    const messageText = message.querySelector('.message__text');
-    messageText.textContent = "¡Has Ganado!";
-
+    renderMessage('¡Has ganado!');
     // Disable new submissions
     numberForm.style.display = 'none';
   }
@@ -106,11 +125,9 @@ newGameButton.addEventListener('click', () => {
 
 const giveUpButton = document.getElementById('give-up');
 giveUpButton.addEventListener('click', () => {
-  const message = document.querySelector('.message');
-  message.classList.add('message--active');
-  const messageText = message.querySelector('.message__text');
-  messageText.textContent = 
+  const text = 
     `¡Has Perdido! El número era: ${SECRET_NUMBER.join('')}`;
+  renderMessage(text);
   // Disable new submissions
   numberForm.style.display = 'none';
 });
