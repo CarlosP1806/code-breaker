@@ -190,7 +190,7 @@ main {
 }
 
 .modal--active {
-  transform: translate(-50%, -40%) scale(1);
+  transform: translate(-50%, -30%) scale(1);
 }
 
 .modal__header {
