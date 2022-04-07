@@ -19,13 +19,13 @@ function generateRandomIndex(min, max) {
 
 // Generate number on page load, then wait for user input
 const SECRET_NUMBER = generateRandomNumber();
-console.log(SECRET_NUMBER);
 
 // Respond to number submission
 const numberForm = document.querySelector('.input-form');
 numberForm.addEventListener('submit', (event) => {
   event.preventDefault();
 
+  // Retrieve user input
   const userGuess = [];
   const inputElements = document.querySelectorAll('.form__input');
   inputElements.forEach(input => {
@@ -37,7 +37,7 @@ numberForm.addEventListener('submit', (event) => {
   const successCount = getSuccessCount(SECRET_NUMBER, userGuess);
   renderGuess(userGuess, successCount);
 
-  // User won
+  // If user won
   if (successCount.correct === 4) {
     const message = document.querySelector('.message');
     message.classList.add('message--active');
