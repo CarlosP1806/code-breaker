@@ -93,8 +93,8 @@ function renderGuess(userGuess, successCount) {
 
   // Iterate over all guess-value divs and include their corresponding number
   const guessDivs = guessElement.querySelectorAll('.guess-value');
-  guessDivs.forEach((div, index) => {
-    div.textContent = userGuess[index];
+  guessDivs.forEach((guess, index) => {
+    guess.textContent = userGuess[index];
   });
 
   // Iterate over indicators and update their status according to success count
@@ -102,13 +102,13 @@ function renderGuess(userGuess, successCount) {
   const indicatorDivs = guessElement.querySelectorAll('.indicator');
   let correct = successCount.correct;
   let misplaced = successCount.misplaced;
-  indicatorDivs.forEach(div => {
+  indicatorDivs.forEach(indicator => {
     if (correct > 0) {
-      div.classList.add('indicator--correct');
+      indicator.classList.add('indicator--correct');
       correct--;
     }
     else if (misplaced > 0) {
-      div.classList.add('indicator--misplaced');
+      indicator.classList.add('indicator--misplaced');
       misplaced--;
     }
   });
